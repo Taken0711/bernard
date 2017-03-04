@@ -24,7 +24,7 @@ public class ConsoleView extends View {
 
     @Override
     public void display() {
-        display("JarvisOS [build 0.1a]\n(c) 2017 Taken Inc. All rights reserved.");
+        display("JarvisOS [build " + Core.VERSION + "]\n(c) 2017 Taken Inc. All rights reserved.");
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ConsoleView extends View {
             wrt.write("\n> ");
             wrt.flush();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 

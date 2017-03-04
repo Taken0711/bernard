@@ -7,6 +7,9 @@ import net.taken.bernard.common.Core;
  */
 public class Main {
 
+    private Main() {
+
+    }
 
     public static void main(String[] args) {
         Core core = new Core();

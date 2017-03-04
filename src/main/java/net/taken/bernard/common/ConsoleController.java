@@ -7,9 +7,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import static net.taken.bernard.common.Mode.ONLINE;
-import static net.taken.bernard.common.Mode.SLEEPMODE;
-
 /**
  * Created by Jeremy on 25/02/2017.
  */
@@ -39,9 +36,9 @@ public class ConsoleController extends Controller {
     protected void waitAnswer() {
         try {
             String ans = rdr.readLine();
-            model.analyzeAnswer(ans);
+            model.analyseSentence(ans);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e);
         }
     }
 
