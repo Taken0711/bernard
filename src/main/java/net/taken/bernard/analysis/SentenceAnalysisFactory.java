@@ -1,14 +1,20 @@
 package net.taken.bernard.analysis;
 
+import net.taken.bernard.analysis.analyser.AbstractAnalyser;
+import net.taken.bernard.analysis.analyser.EffectAnalyser;
+import net.taken.bernard.analysis.analyser.TypeAnalyser;
+import net.taken.bernard.analysis.analyser.data.EffectData;
+
 import java.util.ArrayList;
 import java.util.List;
-import static net.taken.bernard.analysis.SentenceAnalysis.*;
+
+import static net.taken.bernard.analysis.SentenceAnalysis.SentenceAnalysisBuilder;
 /**
  * Created by Jeremy on 04/03/2017.
  */
 public class SentenceAnalysisFactory {
 
-    private static List<AbstractAnalyzer> analyzers = new ArrayList<>();
+    private static List<AbstractAnalyser> analysers = new ArrayList<>();
 
     static {
         initializeAnalyzers();
@@ -18,18 +24,19 @@ public class SentenceAnalysisFactory {
     }
 
     public static SentenceAnalysis getSentenceAnalysis(String sentence) {
-        SentenceAnalysisBuilder builder =  analyzers.get(0).analyze(sentence, new SentenceAnalysisBuilder());
+        SentenceAnalysisBuilder builder =  analysers.get(0).analyze(sentence, new SentenceAnalysisBuilder());
         return builder.build();
     }
 
     private static void initializeAnalyzers() {
-        analyzers.add(new EffectAnalyzer());
+        analysers.add(new EffectAnalyser(new EffectData()));
+        analysers.add(new TypeAnalyser());
 
-        for (int i = 0; i < analyzers.size(); i++) {
-            AbstractAnalyzer next = null;
-            if (i < analyzers.size() -1)
-                next = analyzers.get(i + 1);
-            analyzers.get(i).setNext(next);
+        for (int i = 0; i < analysers.size(); i++) {
+            AbstractAnalyser next = null;
+            if (i < analysers.size() -1)
+                next = analysers.get(i + 1);
+            analysers.get(i).setNext(next);
         }
     }
 

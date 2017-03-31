@@ -1,4 +1,4 @@
-package net.taken.bernard.analysis;
+package net.taken.bernard.analysis.attribute;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public enum Effect {
     POSITIVE("+Effect", +1),
-    MEDIUM("Null", 0),
+    NEUTRAL("Null", 0),
     NEGATIVE("-Effect", -1);
 
     private static Map<String, Effect> map = new HashMap<>();

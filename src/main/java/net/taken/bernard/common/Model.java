@@ -22,7 +22,7 @@ public class Model {
     private SpeakEvent speakEvent = null;
 
     Model() {
-        mode = SLEEPMODE;
+        mode = ONLINE;
     }
 
     public Mode getMode() {
@@ -52,17 +52,18 @@ public class Model {
         SentenceAnalysis sentenceAnalysis = SentenceAnalysisFactory.getSentenceAnalysis(sentence);
         logger.info("Received answer: " + sentence);
         if (getMode() == SLEEPMODE) {
-            if ("Bring yourself back online Bernard".equals(sentence))
+            if ("Bring yourself back online Bernard".equals(sentence)) {
                 setMode(ONLINE);
-            else {
+                fireSpeakEvent();
+            }else {
                 speakEvent = new SpeakEvent(this, mode.getMessage());
                 fireSpeakEvent();
             }
         } else {
-            speakEvent = new SpeakEvent(this, "This was a " + sentenceAnalysis.effect + " sentence.");
+            logger.debug(sentenceAnalysis.toString());
+            unknowAnswer();
         }
 
-        fireSpeakEvent();
     }
 
     private void unknowAnswer() {
