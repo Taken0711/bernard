@@ -21,7 +21,7 @@ public class InterrogativeWordAnalyser extends AbstractAnalyser{
         sentenceAnalysisBuilder.interrogativeWord(getInterrogativeWord(sentence));
     }
 
-    private InterrogativeWord getInterrogativeWord(String sentence) {
+    InterrogativeWord getInterrogativeWord(String sentence) {
         InterrogativeWord res = InterrogativeWord.getInterrogativeWord(sentence.split(" ")[0].toLowerCase());
         logger.debug("Detected interrogative word: " + res);
         return res;

@@ -14,10 +14,10 @@ public enum InterrogativeWord {
     WHEN,
     WHO,
     HOW,
-    HOW_OFTEN,
+    /*HOW_OFTEN,
     HOW_MUCH,
     HOW_MANY,
-    HOW_LONG,
+    HOW_LONG,*/
     WHY,
     WHICH,
     WHOSE;
