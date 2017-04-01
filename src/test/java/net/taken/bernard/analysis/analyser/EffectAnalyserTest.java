@@ -69,4 +69,11 @@ public class EffectAnalyserTest {
         assertEquals(NEUTRAL, analyser.getSentenceEffect("1"));
     }
 
+    @Test
+    public void shouldReturnNeutralWhenEmptySentence() throws Exception {
+        EffectData data = mock(EffectData.class);
+        when(data.getWordEffect(anyString())).thenThrow(new IllegalStateException());
+        analyser = new EffectAnalyser(data);
+        assertEquals(NEUTRAL, analyser.getSentenceEffect(""));
+    }
 }

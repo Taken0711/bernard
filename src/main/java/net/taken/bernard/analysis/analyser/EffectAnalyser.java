@@ -26,9 +26,11 @@ public class EffectAnalyser extends AbstractAnalyser {
         sentenceAnalysisBuilder.effect(getSentenceEffect(sentence));
     }
 
-    protected Effect getSentenceEffect(String sentence) {
+    Effect getSentenceEffect(String sentence) {
         int res = 0;
         for (String word : sentence.split(" ")) {
+            if (word.isEmpty())
+                continue;
             int changeValue = effectData.getWordEffect(word).getEffectValue();
             logger.info(String.format("Analysed word: %s, value found: %s", word, changeValue));
             res += changeValue;

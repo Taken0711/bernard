@@ -9,7 +9,7 @@ import net.taken.bernard.analysis.attribute.Type;
 public class SentenceAnalysis {
 
     public final Effect effect;
-    private final Type type;
+    public final Type type;
 
     private SentenceAnalysis(SentenceAnalysisBuilder builder) {
         effect = builder.effect;
@@ -29,7 +29,7 @@ public class SentenceAnalysis {
             this.type = type;
         }
 
-        SentenceAnalysis build() {
+        public SentenceAnalysis build() {
             return new SentenceAnalysis(this);
         }
     }
