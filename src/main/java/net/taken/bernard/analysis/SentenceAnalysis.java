@@ -1,6 +1,7 @@
 package net.taken.bernard.analysis;
 
 import net.taken.bernard.analysis.attribute.Effect;
+import net.taken.bernard.analysis.attribute.InterrogativeWord;
 import net.taken.bernard.analysis.attribute.Type;
 
 /**
@@ -10,23 +11,32 @@ public class SentenceAnalysis {
 
     public final Effect effect;
     public final Type type;
+    public final InterrogativeWord interrogativeWord;
 
     private SentenceAnalysis(SentenceAnalysisBuilder builder) {
         effect = builder.effect;
         type = builder.type;
+        interrogativeWord = builder.interrogativeWord;
     }
 
     public static class SentenceAnalysisBuilder {
         private Effect effect;
         private Type type;
+        private InterrogativeWord interrogativeWord;
 
         public SentenceAnalysisBuilder effect(Effect effect) {
             this.effect = effect;
             return this;
         }
 
-        public void type(Type type) {
+        public SentenceAnalysisBuilder type(Type type) {
             this.type = type;
+            return this;
+        }
+
+        public SentenceAnalysisBuilder interrogativeWord(InterrogativeWord interrogativeWord) {
+            this.interrogativeWord = interrogativeWord;
+            return this;
         }
 
         public SentenceAnalysis build() {

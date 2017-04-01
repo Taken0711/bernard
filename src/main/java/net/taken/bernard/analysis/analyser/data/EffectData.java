@@ -43,7 +43,7 @@ public class EffectData {
     }
 
     public Effect getWordEffect(String word) {
-        return effectMap.getOrDefault(word, NEUTRAL);
+        return effectMap.getOrDefault(word.toLowerCase(), NEUTRAL);
     }
 
 }
