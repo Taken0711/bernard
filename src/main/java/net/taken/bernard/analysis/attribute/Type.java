@@ -1,5 +1,10 @@
 package net.taken.bernard.analysis.attribute;
 
+import net.taken.bernard.analysis.analyser.AbstractAnalyser;
+import net.taken.bernard.analysis.analyser.DeclarativeAnalyser;
+import net.taken.bernard.analysis.analyser.ExclamatoryAnalyser;
+import net.taken.bernard.analysis.analyser.InterrogativeAnalyser;
+
 import java.util.*;
 
 /**
@@ -7,9 +12,9 @@ import java.util.*;
  */
 public enum Type {
 
-    DECLARATIVE("."),
-    INTERROGATIVE("?"), 
-    EXCLAMATORY("!");
+    DECLARATIVE(new DeclarativeAnalyser(), "."),
+    INTERROGATIVE(new InterrogativeAnalyser(), "?"),
+    EXCLAMATORY(new ExclamatoryAnalyser(), "!");
 
     private static Map<String, Type> map = new HashMap<>();
 
@@ -19,9 +24,15 @@ public enum Type {
     }
 
     private final List<String> identifiers;
+    private final AbstractAnalyser analyser;
 
-    Type(String... identifiers) {
+    Type(AbstractAnalyser analyser, String... identifiers) {
+        this.analyser = analyser;
         this.identifiers = Arrays.asList(identifiers);
+    }
+
+    public AbstractAnalyser getAnalyser() {
+        return analyser;
     }
 
     public static Type getType(String identifier) {

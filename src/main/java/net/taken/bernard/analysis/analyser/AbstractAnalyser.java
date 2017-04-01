@@ -7,7 +7,7 @@ import static net.taken.bernard.analysis.SentenceAnalysis.SentenceAnalysisBuilde
  */
 public abstract class AbstractAnalyser {
 
-    private AbstractAnalyser next;
+    protected AbstractAnalyser next;
 
     public void setNext(AbstractAnalyser next) {
         this.next = next;

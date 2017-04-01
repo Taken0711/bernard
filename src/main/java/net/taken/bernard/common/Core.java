@@ -12,7 +12,7 @@ import java.util.GregorianCalendar;
  */
 public class Core {
 
-    public static final String VERSION = "0.1a";
+    public static final String VERSION = "0.2a";
     private final Calendar firstStart = new GregorianCalendar(2017, 02, 25);
 
     private static final Logger logger = LogManager.getLogger(Core.class);

@@ -28,16 +28,20 @@ public class TypeAnalyser extends AbstractAnalyser {
     protected void hookAnalyze(String sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
         Type res = getSentenceType(sentence);
         sentenceAnalysisBuilder.type(res);
+        AbstractAnalyser tmp = next;
+        next = res.getAnalyser();
+        next.setNext(tmp);
     }
 
     Type getSentenceType(String sentence) {
         Type res = DEFAULT_TYPE;
-        if (sentence.length() >0) {
+        if (sentence.length() > 0) {
             String endChar = Character.toString(sentence.charAt(sentence.length() - 1));
             logger.debug("End char" + endChar);
             if (identifiers.contains(endChar))
                 res = getType(endChar);
         }
+        logger.debug("Detected type: " + res);
         return res;
     }
 
