@@ -49,6 +49,7 @@ public class SentenceAnalysis {
         final StringBuilder sb = new StringBuilder("SentenceAnalysis{");
         sb.append("effect=").append(effect);
         sb.append(", sentenceType=").append(sentenceType);
+        sb.append(", interrogativeWord=").append(interrogativeWord);
         sb.append('}');
         return sb.toString();
     }

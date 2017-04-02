@@ -39,7 +39,7 @@ public class TypeAnalyser extends AbstractAnalyser {
         String sentenceString = sentence.getSentence();
         if (sentenceString.length() > 0) {
             String endChar = Character.toString(sentenceString.charAt(sentenceString.length() - 1));
-            logger.debug("End char" + endChar);
+            logger.debug("End char: " + endChar);
             if (identifiers.contains(endChar))
                 res = getType(endChar);
         }

@@ -59,6 +59,6 @@ public class SentenceTest {
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowExceptionWhenSetWordTypeOfAWordThatIsNotInSentence() throws Exception {
         assertFalse(sentence.getWordList().contains("bro"));
-        sentence.setWordType("bro", InterrogativeWord.HOW);
+        sentence.setWordType("bro", WordType.INTERROGATIVE_WORD);
     }
 }

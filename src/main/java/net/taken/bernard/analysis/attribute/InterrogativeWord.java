@@ -1,15 +1,18 @@
 package net.taken.bernard.analysis.attribute;
 
+import net.taken.bernard.common.IWordType;
 import net.taken.bernard.common.WordType;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static net.taken.bernard.common.WordType.*;
+
 /**
  * Created by jerem on 01/04/2017.
  */
-public enum InterrogativeWord implements WordType{
+public enum InterrogativeWord implements IWordType {
 
     WHAT,
     WHERE,
@@ -37,5 +40,10 @@ public enum InterrogativeWord implements WordType{
 
     public static InterrogativeWord getInterrogativeWord(String syntax) {
         return map.get(syntax.toLowerCase());
+    }
+
+    @Override
+    public WordType getWordType() {
+        return INTERROGATIVE_WORD;
     }
 }

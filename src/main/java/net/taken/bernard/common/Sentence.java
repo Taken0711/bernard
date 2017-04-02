@@ -33,7 +33,7 @@ public class Sentence {
         return stringWordTypeMap.get(word);
     }
 
-    public String getWord(WordType wordType) {
+    public String getWord(IWordType wordType) {
         return wordTypeStringMap.get(wordType);
     }
 
