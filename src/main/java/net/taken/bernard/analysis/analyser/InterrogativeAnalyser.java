@@ -1,6 +1,7 @@
 package net.taken.bernard.analysis.analyser;
 
 import net.taken.bernard.analysis.SentenceAnalysis;
+import net.taken.bernard.common.Sentence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class InterrogativeAnalyser extends AbstractAnalyser {
     }
 
     @Override
-    protected void hookAnalyze(String sentence, SentenceAnalysis.SentenceAnalysisBuilder sentenceAnalysisBuilder) {
+    protected void hookAnalyze(Sentence sentence, SentenceAnalysis.SentenceAnalysisBuilder sentenceAnalysisBuilder) {
         analysers.get(0).hookAnalyze(sentence, sentenceAnalysisBuilder);
     }
 

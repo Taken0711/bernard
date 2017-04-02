@@ -1,6 +1,7 @@
 package net.taken.bernard.analysis.analyser;
 
 import net.taken.bernard.analysis.analyser.data.EffectData;
+import net.taken.bernard.common.Sentence;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,9 +16,12 @@ public class EffectAnalyserTest {
 
 
     private EffectAnalyser analyser;
+    private Sentence aSentence, aWord;
 
     @Before
     public void setUp() throws Exception {
+        aSentence = new Sentence("1 2 3");
+        aWord = new Sentence("1");
 
     }
 
@@ -26,7 +30,7 @@ public class EffectAnalyserTest {
         EffectData data = mock(EffectData.class);
         when(data.getWordEffect(anyString())).thenReturn(NEGATIVE, NEGATIVE, POSITIVE);
         analyser = new EffectAnalyser(data);
-        assertEquals(NEGATIVE, analyser.getSentenceEffect("1 2 3"));
+        assertEquals(NEGATIVE, analyser.getSentenceEffect(aSentence));
     }
 
     @Test
@@ -34,7 +38,7 @@ public class EffectAnalyserTest {
         EffectData data = mock(EffectData.class);
         when(data.getWordEffect(anyString())).thenReturn(NEGATIVE).thenThrow(new IllegalStateException());
         analyser = new EffectAnalyser(data);
-        assertEquals(NEGATIVE, analyser.getSentenceEffect("1"));
+        assertEquals(NEGATIVE, analyser.getSentenceEffect(aWord));
     }
 
     @Test
@@ -42,7 +46,7 @@ public class EffectAnalyserTest {
         EffectData data = mock(EffectData.class);
         when(data.getWordEffect(anyString())).thenReturn(POSITIVE, POSITIVE, POSITIVE);
         analyser = new EffectAnalyser(data);
-        assertEquals(POSITIVE, analyser.getSentenceEffect("1 2 3"));
+        assertEquals(POSITIVE, analyser.getSentenceEffect(aSentence));
     }
 
     @Test
@@ -50,7 +54,7 @@ public class EffectAnalyserTest {
         EffectData data = mock(EffectData.class);
         when(data.getWordEffect(anyString())).thenReturn(POSITIVE).thenThrow(new IllegalStateException());
         analyser = new EffectAnalyser(data);
-        assertEquals(POSITIVE, analyser.getSentenceEffect("1"));
+        assertEquals(POSITIVE, analyser.getSentenceEffect(aWord));
     }
 
     @Test
@@ -58,7 +62,7 @@ public class EffectAnalyserTest {
         EffectData data = mock(EffectData.class);
         when(data.getWordEffect(anyString())).thenReturn(NEUTRAL, POSITIVE, NEGATIVE);
         analyser = new EffectAnalyser(data);
-        assertEquals(NEUTRAL, analyser.getSentenceEffect("1 2 3"));
+        assertEquals(NEUTRAL, analyser.getSentenceEffect(aSentence));
     }
 
     @Test
@@ -66,7 +70,7 @@ public class EffectAnalyserTest {
         EffectData data = mock(EffectData.class);
         when(data.getWordEffect(anyString())).thenReturn(NEUTRAL).thenThrow(new IllegalStateException());
         analyser = new EffectAnalyser(data);
-        assertEquals(NEUTRAL, analyser.getSentenceEffect("1"));
+        assertEquals(NEUTRAL, analyser.getSentenceEffect(aWord));
     }
 
     @Test
@@ -74,6 +78,6 @@ public class EffectAnalyserTest {
         EffectData data = mock(EffectData.class);
         when(data.getWordEffect(anyString())).thenThrow(new IllegalStateException());
         analyser = new EffectAnalyser(data);
-        assertEquals(NEUTRAL, analyser.getSentenceEffect(""));
+        assertEquals(NEUTRAL, analyser.getSentenceEffect(new Sentence("")));
     }
 }

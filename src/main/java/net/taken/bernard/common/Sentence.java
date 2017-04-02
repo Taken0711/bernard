@@ -14,7 +14,8 @@ public class Sentence {
 
     public Sentence(String sentence) {
         this.sentence = sentence;
-        wordList = new ArrayList<>(Arrays.asList(sentence.split(" ")));
+        wordList = new ArrayList<>();
+        Arrays.stream(sentence.split(" ")).filter(word -> !word.isEmpty()).forEach(wordList::add);
         stringWordTypeMap = new LinkedHashMap<>();
         wordTypeStringMap = new LinkedHashMap<>();
         wordList.forEach(word -> stringWordTypeMap.put(word, Optional.empty()));

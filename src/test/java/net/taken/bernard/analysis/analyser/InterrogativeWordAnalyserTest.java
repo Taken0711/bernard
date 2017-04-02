@@ -1,6 +1,7 @@
 package net.taken.bernard.analysis.analyser;
 import net.taken.bernard.analysis.analyser.data.EffectData;
 import net.taken.bernard.analysis.attribute.InterrogativeWord;
+import net.taken.bernard.common.Sentence;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,14 +23,17 @@ public class InterrogativeWordAnalyserTest {
     @Test
     public void identifyAllInterrogativeWord() throws Exception {
         for (InterrogativeWord word: InterrogativeWord.values()) {
-            assertEquals(word, analyser.getInterrogativeWord(word.toString() + " fjebnrfui gfeger ?"));
+            Sentence sentence = new Sentence(word.toString() + " fjebnrfui gfeger ?");
+            System.out.println(sentence.getSentence());
+            assertEquals(word, analyser.getInterrogativeWord(sentence));
         }
     }
 
     @Test
     public void identifyAllInterrogativeWordWithDifferentCase() throws Exception {
         for (InterrogativeWord word: InterrogativeWord.values()) {
-            assertEquals(word, analyser.getInterrogativeWord(word.toString().toUpperCase() + " fjebnrfui gfeger ?"));
+            Sentence sentence = new Sentence(word.toString().toUpperCase() + " fjebnrfui gfeger ?");
+            assertEquals(word, analyser.getInterrogativeWord(sentence));
         }
     }
 }

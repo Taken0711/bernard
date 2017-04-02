@@ -2,6 +2,7 @@ package net.taken.bernard.analysis.analyser;
 
 import net.taken.bernard.analysis.analyser.data.EffectData;
 import net.taken.bernard.analysis.attribute.Effect;
+import net.taken.bernard.common.Sentence;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,15 +23,13 @@ public class EffectAnalyser extends AbstractAnalyser {
     }
 
     @Override
-    protected void hookAnalyze(String sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
+    protected void hookAnalyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
         sentenceAnalysisBuilder.effect(getSentenceEffect(sentence));
     }
 
-    Effect getSentenceEffect(String sentence) {
+    Effect getSentenceEffect(Sentence sentence) {
         int res = 0;
-        for (String word : sentence.split(" ")) {
-            if (word.isEmpty())
-                continue;
+        for (String word : sentence.getWordList()) {
             int changeValue = effectData.getWordEffect(word).getEffectValue();
             logger.info(String.format("Analysed word: %s, value found: %s", word, changeValue));
             res += changeValue;

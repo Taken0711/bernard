@@ -4,6 +4,7 @@ import net.taken.bernard.analysis.analyser.AbstractAnalyser;
 import net.taken.bernard.analysis.analyser.EffectAnalyser;
 import net.taken.bernard.analysis.analyser.TypeAnalyser;
 import net.taken.bernard.analysis.analyser.data.EffectData;
+import net.taken.bernard.common.Sentence;
 import net.taken.bernard.util.AnalysisUtils;
 
 import java.util.ArrayList;
@@ -26,8 +27,8 @@ public class SentenceAnalysisFactory {
     private SentenceAnalysisFactory() {
     }
 
-    public static SentenceAnalysis getSentenceAnalysis(String sentence) {
-        //Tree
+    public static SentenceAnalysis getSentenceAnalysis(String sentenceString) {
+        Sentence sentence = new Sentence(sentenceString);
         SentenceAnalysisBuilder builder =  analysers.get(0).analyze(sentence, new SentenceAnalysisBuilder());
         return builder.build();
     }

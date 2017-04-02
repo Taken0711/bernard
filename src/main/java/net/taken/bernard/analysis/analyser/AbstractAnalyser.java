@@ -1,5 +1,7 @@
 package net.taken.bernard.analysis.analyser;
 
+import net.taken.bernard.common.Sentence;
+
 import static net.taken.bernard.analysis.SentenceAnalysis.SentenceAnalysisBuilder;
 
 /**
@@ -13,13 +15,13 @@ public abstract class AbstractAnalyser {
         this.next = next;
     }
 
-    public final SentenceAnalysisBuilder analyze(String sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
+    public final SentenceAnalysisBuilder analyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
         hookAnalyze(sentence, sentenceAnalysisBuilder);
         if (next == null)
             return sentenceAnalysisBuilder;
         return next.analyze(sentence, sentenceAnalysisBuilder);
     }
 
-    protected abstract void hookAnalyze(String sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder);
+    protected abstract void hookAnalyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder);
 
 }

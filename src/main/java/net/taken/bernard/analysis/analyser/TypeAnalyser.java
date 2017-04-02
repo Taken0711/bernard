@@ -1,6 +1,7 @@
 package net.taken.bernard.analysis.analyser;
 
 import net.taken.bernard.analysis.attribute.SentenceType;
+import net.taken.bernard.common.Sentence;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,7 +26,7 @@ public class TypeAnalyser extends AbstractAnalyser {
     }
 
     @Override
-    protected void hookAnalyze(String sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
+    protected void hookAnalyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
         SentenceType res = getSentenceType(sentence);
         sentenceAnalysisBuilder.sentenceType(res);
         AbstractAnalyser tmp = next;
@@ -33,10 +34,11 @@ public class TypeAnalyser extends AbstractAnalyser {
         next.setNext(tmp);
     }
 
-    SentenceType getSentenceType(String sentence) {
+    SentenceType getSentenceType(Sentence sentence) {
         SentenceType res = DEFAULT_SENTENCE_TYPE;
-        if (sentence.length() > 0) {
-            String endChar = Character.toString(sentence.charAt(sentence.length() - 1));
+        String sentenceString = sentence.getSentence();
+        if (sentenceString.length() > 0) {
+            String endChar = Character.toString(sentenceString.charAt(sentenceString.length() - 1));
             logger.debug("End char" + endChar);
             if (identifiers.contains(endChar))
                 res = getType(endChar);
