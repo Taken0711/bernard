@@ -4,13 +4,13 @@ import net.taken.bernard.analysis.SentenceAnalysis;
 import org.junit.Before;
 import org.junit.Test;
 
-import static net.taken.bernard.analysis.attribute.Type.*;
+import static net.taken.bernard.analysis.attribute.SentenceType.*;
 import static org.junit.Assert.*;
 
 /**
  * Created by jerem on 01/04/2017.
  */
-public class TypeAnalyserTest {
+public class SentenceTypeAnalyserTest {
 
     private TypeAnalyser analyser;
 
@@ -23,7 +23,7 @@ public class TypeAnalyserTest {
     public void changeTypeInSentenceAnalysis() throws Exception {
         SentenceAnalysis.SentenceAnalysisBuilder builder = new SentenceAnalysis.SentenceAnalysisBuilder();
         analyser.hookAnalyze("", builder);
-        assertEquals(DECLARATIVE, builder.build().type);
+        assertEquals(DECLARATIVE, builder.build().sentenceType);
     }
 
     @Test

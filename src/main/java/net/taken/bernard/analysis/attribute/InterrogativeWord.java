@@ -1,5 +1,7 @@
 package net.taken.bernard.analysis.attribute;
 
+import net.taken.bernard.common.WordType;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +9,7 @@ import java.util.Map;
 /**
  * Created by jerem on 01/04/2017.
  */
-public enum InterrogativeWord {
+public enum InterrogativeWord implements WordType{
 
     WHAT,
     WHERE,
@@ -34,6 +36,6 @@ public enum InterrogativeWord {
     }
 
     public static InterrogativeWord getInterrogativeWord(String syntax) {
-        return map.get(syntax);
+        return map.get(syntax.toLowerCase());
     }
 }

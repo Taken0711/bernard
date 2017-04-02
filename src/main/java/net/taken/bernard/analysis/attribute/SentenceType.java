@@ -10,23 +10,23 @@ import java.util.*;
 /**
  * Created by Jeremy on 04/03/2017.
  */
-public enum Type {
+public enum SentenceType {
 
     DECLARATIVE(new DeclarativeAnalyser(), "."),
     INTERROGATIVE(new InterrogativeAnalyser(), "?"),
     EXCLAMATORY(new ExclamatoryAnalyser(), "!");
 
-    private static Map<String, Type> map = new HashMap<>();
+    private static Map<String, SentenceType> map = new HashMap<>();
 
     static {
-        Arrays.stream(values()).forEach(type ->
-                type.identifiers.forEach(identifier -> map.put(identifier, type)));
+        Arrays.stream(values()).forEach(sentenceType ->
+                sentenceType.identifiers.forEach(identifier -> map.put(identifier, sentenceType)));
     }
 
     private final List<String> identifiers;
     private final AbstractAnalyser analyser;
 
-    Type(AbstractAnalyser analyser, String... identifiers) {
+    SentenceType(AbstractAnalyser analyser, String... identifiers) {
         this.analyser = analyser;
         this.identifiers = Arrays.asList(identifiers);
     }
@@ -35,13 +35,13 @@ public enum Type {
         return analyser;
     }
 
-    public static Type getType(String identifier) {
+    public static SentenceType getType(String identifier) {
         return map.get(identifier);
     }
 
     public static List<String> getIdentifiers() {
         List<String> res = new ArrayList<>();
-        Arrays.stream(values()).forEach(type -> res.addAll(type.identifiers));
+        Arrays.stream(values()).forEach(sentenceType -> res.addAll(sentenceType.identifiers));
         return res;
     }
 

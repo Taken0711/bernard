@@ -27,6 +27,7 @@ public class SentenceAnalysisFactory {
     }
 
     public static SentenceAnalysis getSentenceAnalysis(String sentence) {
+        //Tree
         SentenceAnalysisBuilder builder =  analysers.get(0).analyze(sentence, new SentenceAnalysisBuilder());
         return builder.build();
     }

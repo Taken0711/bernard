@@ -2,7 +2,7 @@ package net.taken.bernard.analysis;
 
 import net.taken.bernard.analysis.attribute.Effect;
 import net.taken.bernard.analysis.attribute.InterrogativeWord;
-import net.taken.bernard.analysis.attribute.Type;
+import net.taken.bernard.analysis.attribute.SentenceType;
 
 /**
  * Created by Jeremy on 04/03/2017.
@@ -10,18 +10,18 @@ import net.taken.bernard.analysis.attribute.Type;
 public class SentenceAnalysis {
 
     public final Effect effect;
-    public final Type type;
+    public final SentenceType sentenceType;
     public final InterrogativeWord interrogativeWord;
 
     private SentenceAnalysis(SentenceAnalysisBuilder builder) {
         effect = builder.effect;
-        type = builder.type;
+        sentenceType = builder.sentenceType;
         interrogativeWord = builder.interrogativeWord;
     }
 
     public static class SentenceAnalysisBuilder {
         private Effect effect;
-        private Type type;
+        private SentenceType sentenceType;
         private InterrogativeWord interrogativeWord;
 
         public SentenceAnalysisBuilder effect(Effect effect) {
@@ -29,8 +29,8 @@ public class SentenceAnalysis {
             return this;
         }
 
-        public SentenceAnalysisBuilder type(Type type) {
-            this.type = type;
+        public SentenceAnalysisBuilder sentenceType(SentenceType sentenceType) {
+            this.sentenceType = sentenceType;
             return this;
         }
 
@@ -48,7 +48,7 @@ public class SentenceAnalysis {
     public String toString() {
         final StringBuilder sb = new StringBuilder("SentenceAnalysis{");
         sb.append("effect=").append(effect);
-        sb.append(", type=").append(type);
+        sb.append(", sentenceType=").append(sentenceType);
         sb.append('}');
         return sb.toString();
     }
