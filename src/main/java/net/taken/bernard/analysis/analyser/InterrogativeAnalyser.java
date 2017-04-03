@@ -17,6 +17,7 @@ public class InterrogativeAnalyser extends AbstractAnalyser {
 
     public InterrogativeAnalyser() {
         analysers.add(new InterrogativeWordAnalyser());
+        analysers.add(new AuxiliaryAnalyser());
 
         chainAnalysers(analysers);
     }

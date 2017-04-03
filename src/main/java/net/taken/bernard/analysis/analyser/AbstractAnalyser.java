@@ -1,6 +1,8 @@
 package net.taken.bernard.analysis.analyser;
 
 import net.taken.bernard.common.Sentence;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import static net.taken.bernard.analysis.SentenceAnalysis.SentenceAnalysisBuilder;
 
@@ -8,6 +10,8 @@ import static net.taken.bernard.analysis.SentenceAnalysis.SentenceAnalysisBuilde
  * Created by Jeremy on 04/03/2017.
  */
 public abstract class AbstractAnalyser {
+
+    private static final Logger logger = LogManager.getLogger(AbstractAnalyser.class);
 
     protected AbstractAnalyser next;
 
@@ -17,6 +21,7 @@ public abstract class AbstractAnalyser {
 
     public final SentenceAnalysisBuilder analyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
         hookAnalyze(sentence, sentenceAnalysisBuilder);
+        logger.debug("Next is: " + next);
         if (next == null)
             return sentenceAnalysisBuilder;
         return next.analyze(sentence, sentenceAnalysisBuilder);
