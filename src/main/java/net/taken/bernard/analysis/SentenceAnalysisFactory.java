@@ -5,13 +5,12 @@ import net.taken.bernard.analysis.analyser.EffectAnalyser;
 import net.taken.bernard.analysis.analyser.TypeAnalyser;
 import net.taken.bernard.analysis.analyser.data.EffectData;
 import net.taken.bernard.common.Sentence;
-import net.taken.bernard.util.AnalysisUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static net.taken.bernard.analysis.SentenceAnalysis.SentenceAnalysisBuilder;
-import static net.taken.bernard.util.AnalysisUtils.*;
+import static net.taken.bernard.util.AnalysisUtils.chainAnalysers;
 
 /**
  * Created by Jeremy on 04/03/2017.

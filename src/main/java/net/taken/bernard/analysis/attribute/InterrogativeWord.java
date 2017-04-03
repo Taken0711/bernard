@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.taken.bernard.common.WordType.*;
+import static net.taken.bernard.common.WordType.INTERROGATIVE_WORD;
 
 /**
  * Created by jerem on 01/04/2017.

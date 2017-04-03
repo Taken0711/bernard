@@ -1,16 +1,12 @@
 package net.taken.bernard.analysis.analyser;
 import net.taken.bernard.analysis.SentenceAnalysis;
-import net.taken.bernard.analysis.analyser.data.EffectData;
 import net.taken.bernard.analysis.attribute.InterrogativeWord;
 import net.taken.bernard.common.Sentence;
-import net.taken.bernard.common.WordType;
 import org.junit.Before;
 import org.junit.Test;
 
-import static net.taken.bernard.analysis.attribute.Effect.*;
 import static net.taken.bernard.analysis.attribute.InterrogativeWord.*;
 import static net.taken.bernard.common.WordType.INTERROGATIVE_WORD;
-import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 /**
  * Created by jerem on 01/04/2017.
@@ -28,7 +24,7 @@ public class InterrogativeWordAnalyserTest {
     public void identifyAllInterrogativeWord() throws Exception {
         for (InterrogativeWord word: InterrogativeWord.values()) {
             Sentence sentence = new Sentence(word.toString() + " fjebnrfui gfeger ?");
-            System.out.println(sentence.getSentence());
+            System.out.println(sentence.getSentenceString());
             assertEquals(word, analyser.getInterrogativeWord(sentence));
         }
     }

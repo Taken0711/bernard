@@ -6,7 +6,7 @@ import net.taken.bernard.common.Sentence;
 import java.util.ArrayList;
 import java.util.List;
 
-import static net.taken.bernard.util.AnalysisUtils.*;
+import static net.taken.bernard.util.AnalysisUtils.chainAnalysers;
 
 /**
  * Created by jerem on 01/04/2017.

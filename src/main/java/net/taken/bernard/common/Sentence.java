@@ -7,22 +7,22 @@ import java.util.*;
  */
 public class Sentence {
 
-    private final String sentence;
+    private final String sentenceString;
     private final List<String> wordList;
     private final Map<String, Optional<WordType>> stringWordTypeMap;
     private final Map<WordType, String> wordTypeStringMap;
 
-    public Sentence(String sentence) {
-        this.sentence = sentence;
+    public Sentence(String sentenceString) {
+        this.sentenceString = sentenceString;
         wordList = new ArrayList<>();
-        Arrays.stream(sentence.split(" ")).filter(word -> !word.isEmpty()).forEach(wordList::add);
+        Arrays.stream(sentenceString.split(" ")).filter(word -> !word.isEmpty()).forEach(wordList::add);
         stringWordTypeMap = new LinkedHashMap<>();
         wordTypeStringMap = new LinkedHashMap<>();
         wordList.forEach(word -> stringWordTypeMap.put(word, Optional.empty()));
     }
 
-    public String getSentence() {
-        return sentence;
+    public String getSentenceString() {
+        return sentenceString;
     }
 
     public List<String> getWordList() {
@@ -38,8 +38,9 @@ public class Sentence {
     }
 
     public void setWordType(String word, WordType wordType) {
-        if (stringWordTypeMap.replace(word, Optional.of(wordType)) == null)
+        if (!stringWordTypeMap.containsKey(word))
             throw new IllegalArgumentException("No such word");
+        stringWordTypeMap.replace(word, Optional.of(wordType));
         wordTypeStringMap.put(wordType, word);
     }
 

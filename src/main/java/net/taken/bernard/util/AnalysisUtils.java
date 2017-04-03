@@ -9,6 +9,9 @@ import java.util.List;
  */
 public class AnalysisUtils {
 
+    private AnalysisUtils() {
+    }
+
     public static void chainAnalysers(List<AbstractAnalyser> analysers) {
         for (int i = 0; i < analysers.size(); i++) {
             AbstractAnalyser next = null;
