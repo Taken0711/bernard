@@ -21,7 +21,7 @@ public class AuxiliaryAnalyser extends AbstractAnalyser {
     }
 
     @Override
-    protected void hookAnalyze(Sentence sentence, SentenceAnalysis.SentenceAnalysisBuilder sentenceAnalysisBuilder) {
+    public void hookAnalyze(Sentence sentence, SentenceAnalysis.SentenceAnalysisBuilder sentenceAnalysisBuilder) {
         // TODO: change the word type in sentence
         sentenceAnalysisBuilder.auxiliary(getAuxiliary(sentence));
     }
@@ -29,8 +29,9 @@ public class AuxiliaryAnalyser extends AbstractAnalyser {
     Auxiliary getAuxiliary(Sentence sentence) {
         String interrogativeWord = sentence.getWord(INTERROGATIVE_WORD);
         int auxiliaryIndex = 0;
-        if (sentence.getWordList().contains(interrogativeWord))
+        if (interrogativeWord != null) {
             auxiliaryIndex = sentence.getWordList().indexOf(interrogativeWord) + 1;
+        }
         Auxiliary res = Auxiliary.getAuxiliary(sentence.getWordList().get(auxiliaryIndex));
         logger.debug(String.format("Auxiliary position: %d, detected auxiliary: %s", auxiliaryIndex, res));
         return res;

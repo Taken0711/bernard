@@ -26,7 +26,7 @@ public class TypeAnalyser extends AbstractAnalyser {
     }
 
     @Override
-    protected void hookAnalyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
+    public void hookAnalyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
         SentenceType res = getSentenceType(sentence);
         sentenceAnalysisBuilder.sentenceType(res);
         AbstractAnalyser tmp = next;

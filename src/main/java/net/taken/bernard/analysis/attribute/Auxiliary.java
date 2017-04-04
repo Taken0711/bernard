@@ -32,7 +32,7 @@ public interface Auxiliary extends IWordType {
 
         static {
             for (Present aux: values()) {
-                aux.syntaxList.forEach(syntax -> syntaxMap.put(syntax, aux));
+                aux.syntaxList.forEach(syntax -> syntaxMap.put(syntax.toLowerCase(), aux));
             }
         }
 
@@ -48,7 +48,7 @@ public interface Auxiliary extends IWordType {
         }
 
         static Auxiliary getAuxiliary(String syntax) {
-            return syntaxMap.get(syntax);
+            return syntaxMap.get(syntax.toLowerCase());
         }
     }
 

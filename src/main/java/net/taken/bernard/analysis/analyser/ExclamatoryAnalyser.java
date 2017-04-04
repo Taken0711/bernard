@@ -8,7 +8,7 @@ import net.taken.bernard.common.Sentence;
  */
 public class ExclamatoryAnalyser extends AbstractAnalyser {
     @Override
-    protected void hookAnalyze(Sentence sentence, SentenceAnalysis.SentenceAnalysisBuilder sentenceAnalysisBuilder) {
+    public void hookAnalyze(Sentence sentence, SentenceAnalysis.SentenceAnalysisBuilder sentenceAnalysisBuilder) {
         throw new UnsupportedOperationException("Not implemented yet.");
     }
 }

@@ -3,6 +3,7 @@ import net.taken.bernard.analysis.SentenceAnalysis;
 import net.taken.bernard.analysis.attribute.InterrogativeWord;
 import net.taken.bernard.common.Sentence;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static net.taken.bernard.analysis.attribute.InterrogativeWord.*;
@@ -13,10 +14,10 @@ import static org.junit.Assert.*;
  */
 public class InterrogativeWordAnalyserTest {
 
-    InterrogativeWordAnalyser analyser;
+    private static InterrogativeWordAnalyser analyser;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
         analyser = new InterrogativeWordAnalyser();
     }
 

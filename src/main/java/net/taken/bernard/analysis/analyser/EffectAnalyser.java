@@ -23,7 +23,7 @@ public class EffectAnalyser extends AbstractAnalyser {
     }
 
     @Override
-    protected void hookAnalyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
+    public void hookAnalyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
         sentenceAnalysisBuilder.effect(getSentenceEffect(sentence));
     }
 

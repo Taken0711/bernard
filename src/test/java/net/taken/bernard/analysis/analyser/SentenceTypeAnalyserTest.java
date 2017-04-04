@@ -3,6 +3,7 @@ package net.taken.bernard.analysis.analyser;
 import net.taken.bernard.analysis.SentenceAnalysis;
 import net.taken.bernard.common.Sentence;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static net.taken.bernard.analysis.attribute.SentenceType.*;
@@ -13,11 +14,11 @@ import static org.junit.Assert.*;
  */
 public class SentenceTypeAnalyserTest {
 
-    private TypeAnalyser analyser;
-    private String someWords;
+    private static TypeAnalyser analyser;
+    private static String someWords;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
         analyser = new TypeAnalyser();
         someWords = "jirejf aerfi jeairof";
     }

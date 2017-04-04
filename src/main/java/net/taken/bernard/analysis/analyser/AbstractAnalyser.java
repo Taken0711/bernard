@@ -15,6 +15,10 @@ public abstract class AbstractAnalyser {
 
     protected AbstractAnalyser next;
 
+    public AbstractAnalyser getNext() {
+        return next;
+    }
+
     public void setNext(AbstractAnalyser next) {
         this.next = next;
     }
@@ -27,6 +31,6 @@ public abstract class AbstractAnalyser {
         return next.analyze(sentence, sentenceAnalysisBuilder);
     }
 
-    protected abstract void hookAnalyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder);
+    public abstract void hookAnalyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder);
 
 }
