@@ -37,6 +37,7 @@ public class AnalysisUtilsTest {
         analysers.add(analyser2);
         AnalysisUtils.chainAnalysers(analysers);
         assertEquals(analyser2, analyser1.getNext());
+        assertTrue(analyser2.getNext() == null);
         Sentence sentence = new Sentence("?");
         SentenceAnalysis.SentenceAnalysisBuilder builder = new SentenceAnalysis.SentenceAnalysisBuilder();
         analysers.get(0).analyze(sentence, builder);
