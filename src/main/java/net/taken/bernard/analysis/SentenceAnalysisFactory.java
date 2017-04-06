@@ -2,6 +2,7 @@ package net.taken.bernard.analysis;
 
 import net.taken.bernard.analysis.analyser.AbstractAnalyser;
 import net.taken.bernard.analysis.analyser.EffectAnalyser;
+import net.taken.bernard.analysis.analyser.SentenceAnalyser;
 import net.taken.bernard.analysis.analyser.TypeAnalyser;
 import net.taken.bernard.analysis.analyser.data.EffectData;
 import net.taken.bernard.common.Sentence;
@@ -17,26 +18,15 @@ import static net.taken.bernard.util.AnalysisUtils.chainAnalysers;
  */
 public class SentenceAnalysisFactory {
 
-    private static List<AbstractAnalyser> analysers = new ArrayList<>();
-
-    static {
-        initializeAnalyzers();
-    }
+    private static AbstractAnalyser analyser = new SentenceAnalyser();
 
     private SentenceAnalysisFactory() {
     }
 
     public static SentenceAnalysis getSentenceAnalysis(String sentenceString) {
         Sentence sentence = new Sentence(sentenceString);
-        SentenceAnalysisBuilder builder =  analysers.get(0).analyze(sentence, new SentenceAnalysisBuilder());
+        SentenceAnalysisBuilder builder =  analyser.analyze(sentence, new SentenceAnalysisBuilder());
         return builder.build();
-    }
-
-    private static void initializeAnalyzers() {
-        analysers.add(new EffectAnalyser(new EffectData()));
-        analysers.add(new TypeAnalyser());
-
-        chainAnalysers(analysers);
     }
 
 }
