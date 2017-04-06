@@ -9,6 +9,5 @@ import net.taken.bernard.common.Sentence;
 public class DeclarativeAnalyser extends AbstractAnalyser {
     @Override
     public void hookAnalyze(Sentence sentence, SentenceAnalysis.SentenceAnalysisBuilder sentenceAnalysisBuilder) {
-        throw new UnsupportedOperationException("Not implemented yet.");
     }
 }

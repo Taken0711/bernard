@@ -29,9 +29,7 @@ public class TypeAnalyser extends AbstractAnalyser {
     public void hookAnalyze(Sentence sentence, SentenceAnalysisBuilder sentenceAnalysisBuilder) {
         SentenceType res = getSentenceType(sentence);
         sentenceAnalysisBuilder.sentenceType(res);
-        AbstractAnalyser tmp = next;
         next = res.getAnalyser();
-        next.setNext(tmp);
     }
 
     SentenceType getSentenceType(Sentence sentence) {
