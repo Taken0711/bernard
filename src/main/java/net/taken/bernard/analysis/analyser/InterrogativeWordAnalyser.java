@@ -19,7 +19,10 @@ public class InterrogativeWordAnalyser extends AbstractAnalyser{
     
     @Override
     public void hookAnalyze(Sentence sentence, SentenceAnalysis.SentenceAnalysisBuilder sentenceAnalysisBuilder) {
-        sentenceAnalysisBuilder.interrogativeWord(getInterrogativeWord(sentence));
+        InterrogativeWord interrogativeWord = getInterrogativeWord(sentence);
+        sentenceAnalysisBuilder.interrogativeWord(interrogativeWord);
+        if (interrogativeWord == null)
+            return;
         sentence.joinWords(interrogativeWordString.split(" "));
         sentence.setWordType(interrogativeWordString, INTERROGATIVE_WORD);
     }

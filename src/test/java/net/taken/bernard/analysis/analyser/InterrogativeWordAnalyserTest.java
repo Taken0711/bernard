@@ -25,7 +25,6 @@ public class InterrogativeWordAnalyserTest {
     public void identifyAllInterrogativeWord() throws Exception {
         for (InterrogativeWord word: InterrogativeWord.values()) {
             Sentence sentence = new Sentence(word.toString() + " fjebnrfui gfeger ?");
-            System.out.println(sentence.getSentenceString());
             assertEquals(word, analyser.getInterrogativeWord(sentence));
         }
     }
@@ -47,5 +46,14 @@ public class InterrogativeWordAnalyserTest {
         assertTrue(sentence.getWordList().contains("How often"));
         assertEquals(INTERROGATIVE_WORD, sentence.getWordType("How often").get());
         assertEquals(HOW_OFTEN, builder.build().interrogativeWord);
+    }
+
+    @Test
+    public void shouldBeOkWhenNoInterrogativeWord() throws Exception {
+        Sentence sentence = new Sentence("Are you fjebnrfui gfeger ?");
+        SentenceAnalysis.SentenceAnalysisBuilder builder = new SentenceAnalysis.SentenceAnalysisBuilder();
+        analyser.hookAnalyze(sentence, builder);
+        assertEquals(null, analyser.getInterrogativeWord(sentence));
+
     }
 }

@@ -24,7 +24,7 @@ public class InterrogativeAnalyser extends AbstractAnalyser {
 
     @Override
     public void hookAnalyze(Sentence sentence, SentenceAnalysis.SentenceAnalysisBuilder sentenceAnalysisBuilder) {
-        analysers.get(0).hookAnalyze(sentence, sentenceAnalysisBuilder);
+        analysers.get(0).analyze(sentence, sentenceAnalysisBuilder);
     }
 
 }
